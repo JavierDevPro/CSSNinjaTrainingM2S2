@@ -1,3 +1,40 @@
+h1, h2, h3 {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  color: #ff0000; /* rojo sangriento */
+  text-shadow: 
+    2px 2px 0 #8b0000, /* borde oscuro */
+    4px 4px 8px #4d1400; /* glow naranja */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.fatality-text {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  color: #ff0000;
+  font-size: 3rem;
+  text-shadow: 
+    2px 2px #800000, 
+    4px 4px 10px #5a0000, 
+    6px 6px 20px #ff6347;
+  animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+    text-shadow:
+      2px 2px #800000,
+      4px 4px 10px #ff0000;
+  }
+  to {
+    opacity: 0.9;
+    text-shadow:
+      3px 3px #8b0000,
+      5px 5px 15px #ff4500;
+  }
+}
+
+
 div {
     color:blue;    
 }
@@ -33,8 +70,8 @@ body {
     padding: 20px;
     /* margin: 10px 50px 100px 50px; */
     /* margin: 30px; */
-    max-width: 100pc;
-    font-weight: 10px;
+    max-width: 100%;
+    font-weight: 100;
     width: 95%;    
     max-height: 80vh;
     margin: auto;
@@ -42,28 +79,32 @@ body {
     grid-template-rows: 1fr 13fr;
 }
 
-.box .Ninjas{
+.ninjas {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     background-image: url(../img/mortalBackGround.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: center;
+    background-position: center;
+    padding: 1px;
+    height: 95%; /* define una altura explícita */
+    overflow: hidden; /* evita desbordes */
 }
 
-.Ninja{
-    transform: scale(0.1fr);
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+.ninja {
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    transform: scale(2);
 }
 
-#Ninja1{
+
+#ninja1{
     filter: invert(84%) sepia(84%) saturate(680%) hue-rotate(8deg) brightness(108%) contrast(102%);
 }
 
-#Ninja2{
+#ninja2{
     filter: brightness(0) saturate(100%) invert(75%) sepia(22%) saturate(4455%) hue-rotate(150deg) brightness(103%) contrast(108%);
 }
 
@@ -89,11 +130,9 @@ body {
     padding: 10px;
 }
 
-/* #NinjaBomb{
-    display: flex;
-} */
 
 .rotate-box {
+    margin-top: 20px;
     width: 100px;
     height: 100px;
     background-color: black;
@@ -101,27 +140,35 @@ body {
     border-radius: 100%;
     transform: rotate(45deg);
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
     left: 50%;
 }
 
-#fuse{
-    width: 100px;
-    height: 10px;
-    left: 0;    
-    background-color: #ffffff;
+#fuse {
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to top, red, orange, yellow);
+    position: absolute;
+    top: -40px; /* lo sitúa encima de la bomba */
+    left: 48%;
+    animation: burn 2s linear forwards;
+    border-radius: 2px;
+    box-shadow: 0 0 5px yellow;
 }
 
-.fade-in {
-    animation: fade 2s ease-in-out;
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-@keyframes fade{
-    0%{
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.button-link:hover {
+    background-color: darkred;
 }
